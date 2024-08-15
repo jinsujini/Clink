@@ -4,7 +4,7 @@ const WebSocketService = {
     client: null,
 
     connect: (roomId, onMessageReceived) => {
-        const socket = new WebSocket('ws://13.48.207.238:1234/ws');
+        const socket = new WebSocket('wss://13.48.207.238:1234/ws');
         
         WebSocketService.client = new Client({
             webSocketFactory: () => socket,
