@@ -1,0 +1,75 @@
+
+.create {
+    width: 880px;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    input:focus{
+        outline: none;
+    }
+    
+.caution{
+    color: white;
+}
+}
+
+ .c-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    img {
+        width: 258px;
+    }
+
+    margin-bottom: 70px;
+}
+
+
+.img{
+    display: flex;
+    width: 291px;
+    height: 326px;
+    border-radius: 30px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    img{
+        width: 221px;
+        height: 251px;
+
+    }
+    .addimg{
+        position: absolute;
+        border: none;
+        top:250px;
+        background: rgba($color: #000000, $alpha: 0);
+        img{
+            height: 30px;
+            width: 30px;
+        }
+    }
+}
+.signbtn{
+    font-size:20px ;
+    padding: 10px;
+    height: 60px;
+    margin: 20px auto;
+    width: 180px;
+    background-color: black;
+    border: white 1px solid;
+    color: white;
+    justify-content: center;
+    border-radius: 35px;
+}
+.signbtn:hover {
+    background: linear-gradient(90deg, #3851FF, #8037FF);
+    border: none;
+}
+button:hover{
+    cursor: pointer;
+}
+.caution{
+    font-weight: normal;
+}

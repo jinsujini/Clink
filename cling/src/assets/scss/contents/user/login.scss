@@ -1,0 +1,57 @@
+.login {
+   input{
+    outline: none;
+   }
+    justify-content: center;
+    .wrap {
+        margin: 0 auto;
+        position: relative;
+      justify-content: center;
+      width: fit-content;
+      
+    }
+    .findpw{
+        position: absolute;
+        left: 40px;
+        bottom: 130px;
+        color: #C5A4FF;
+    }
+    .login-form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        input {
+            width: 450px;
+            height: 70px;
+            border-radius: 35px;
+            padding: 10px 30px;
+            margin: 20px 0;
+            font-size: 25px;
+        }
+
+        input::placeholder {
+            color: #8037ff71;
+            font-weight: 500;
+        }
+
+        .signbtn,
+        .signup {
+            font-size: 20px;
+            padding: 10px;
+            height: 60px;
+            margin: 40px 10px;
+            width: 180px;
+            background-color: black;
+            border: white 1px solid;
+            color: white;
+            justify-content: center;
+            border-radius: 35px;
+        }
+
+        .signbtn:hover,.signup:hover {
+            background: linear-gradient(90deg, #3851FF, #8037FF);
+            border: none;
+        }
+    }
+}

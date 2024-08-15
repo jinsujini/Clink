@@ -1,0 +1,169 @@
+#noticeOpen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    margin-bottom: 300px;
+    .loading{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+   
+
+    .wrap{
+        width: 80%;
+        margin: 0 auto;
+    }
+    .Home {
+        background: linear-gradient(90deg, #3851FF, #8037FF);
+        border: none !important;
+    }
+
+    .swiper {
+        width: inherit;
+        margin-top: 30px;
+        height: 650px;
+        object-fit: cover;
+        border-radius: 50px;
+        padding-bottom: 50px;
+        
+    }
+
+    .swiper-slide {
+        width: inherit;
+        height: inherit;
+        display: flex; 
+        justify-content: center;  
+        align-items: center;  
+        
+    }
+    
+
+    .swiper-slide img {
+        width: inherit;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .swiper-pagination-bullet {
+        
+        border: solid white !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: white !important;
+    }
+
+    #contentBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 100%;
+
+
+        .backBox {
+            width: 100%;
+        }
+
+        
+        #topBox {
+            display: flex;
+            font-size: 35px;
+            justify-content: center;
+            align-items: center;
+            word-break: break-all;
+            text-align: center;
+            position: relative;
+            width: inherit;
+
+            .back {
+                position: absolute;
+                font-size: 40px;
+                left: 30px;
+             
+            }
+            .back:hover {
+                cursor: pointer;
+            }
+            .text1 {
+                font-weight: bold;
+                font-size: 40px;
+                text-align: center;
+                width: 500px;
+                padding: 15px;
+                white-space: pre-wrap; 
+            }
+        }
+        
+        #editBox1{
+            margin-bottom: 70px;
+            #editBox2 {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+            #delete, #edit {
+                cursor: pointer;
+                text-decoration: underline 1px;
+                text-underline-position: under;
+            }
+            #delete:hover, #edit:hover{
+                color: #8953ff;
+            }
+        }
+
+        .createdDate{
+            margin-left: 0;
+            width: 800px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        #contents {
+            display: flex;
+            padding: 0 40px;
+            
+            .text2 {
+                font-size: 20px;
+                margin: 0px 100px;
+                width: 800px;
+                padding: 15px;
+                min-height: 300px;
+                max-height: 500px;
+                overflow-y: scroll;
+                white-space: pre-wrap;
+            }
+        }
+    }
+
+    #btnWrite {
+        position: relative;
+        width: 160px;
+        height: 40px;
+        margin: 100px auto;
+        display: block;
+        border: none;
+        background: #7939FF;
+        box-shadow: 5px 5px 10px 0 #4c1bb6 inset;
+        border-radius: 100px;
+        color: white;
+        font-size: 20px;
+        font-family: 'PyeongChangPeaced-Light';
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: white;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        //스크롤바 배경
+    }
+}

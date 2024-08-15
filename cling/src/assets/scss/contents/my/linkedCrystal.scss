@@ -1,0 +1,105 @@
+.linkedprofil{
+    position: relative; 
+    left: 0;
+	right: 0;
+    margin: 200px auto;
+    width: 1000px;
+    color: white;
+
+    #title{
+        margin-left:15px;
+        margin-bottom:50px;
+        position: relative; 
+        font-weight: bold;
+        
+        #username{
+            font-family: 'PyeongChangPeace-Bold';
+            font-size: 45px;
+            padding:10px;
+        }
+    }
+    
+    //스크롤뷰
+    #profillist{
+        position:relative;
+        height: 800px;
+        overflow-y: scroll;
+    }
+    
+    .linkedZero{
+        font-size: 20px;
+        line-height: 500px;
+        display: flex; 
+        justify-content:center; 
+    }
+    .profil {
+        display: flex;
+        align-items: center; 
+        padding: 20px;
+        margin: 50px auto;
+        
+        .imghuman {
+            width: 160px; 
+            height: 160px;
+            margin-right: 100px; 
+            margin-left: 120px;
+            object-fit: cover;
+            background-color: black;
+        }
+    
+        #info {
+            width: 430px;
+            display: flex;
+            flex-direction: column; // 텍스트 수직 정렬
+            font-size: 30px;
+            font-weight: bold;
+            
+            .infotext {
+                display: flex;
+                justify-content: space-between;
+                align-items: center; // 텍스트 수직 정렬
+                margin: 10px 10px;
+                border-bottom: solid 0.8px;
+    
+                .text1 {
+                    font-weight: bold; 
+                    margin-right: 10px;
+                }
+    
+                .text2 {
+                    text-align: right;
+                }
+            }
+        }
+    }
+    
+    .imgprofil{
+        width: 800px;
+        margin: auto;
+        position: absolute; 
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: -1; //맨 아래 배치
+    }
+    
+    
+    ::-webkit-scrollbar {
+        width: 8px;  
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: white; // 스크롤바 색상
+        border-radius: 10px; 
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: rgba(220, 20, 60, .1);  //스크롤바 뒷 배경 색
+    }
+    .message{
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+}

@@ -1,0 +1,105 @@
+.passlist {
+    .Crew {
+        background: linear-gradient(90deg, #3851FF, #8037FF);
+        border: none !important;
+    }
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+    font-size: 24px;
+    font-weight: bold;
+    .plan{
+        margin-bottom: 20px;
+        outline: none;
+    }
+
+    .table-title,
+    .row {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .table-title {
+        > .passlist-item {
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+        }
+
+        > .passlist-item:last-child{
+            border-right: none;
+        }
+    }
+
+    .row {
+        >div{
+            padding-top: 20px;
+        }
+        > .passlist-item {
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            margin: 20px;
+            text-align: center;
+        }
+
+        > .passlist-item:first-child {
+            border-left: 1px solid #ddd;
+        }
+    }
+
+    .passlist-select {
+        display: flex;
+        justify-content: center;
+        .select-pass {
+            width: 119px;
+            height: 40px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+            font-size: 24px;
+            font-weight: 500;
+            color: #fff;
+        }
+        .noselect{
+            background-color: #535353;
+            
+        }
+        .pass{
+            background: linear-gradient(0, #6F3EFF, #AE7EFF);
+        }
+        .nonpass{
+            background-color: #00116d;
+            color: #f1f1f1;
+        }
+    }
+
+    .passlist-file {
+        border-right: 1px solid #ddd;
+        padding: 10px 20px;
+        display: flex;
+        color: #BACCFF;
+
+        .file {
+            margin-left: 10px;
+            text-decoration: underline;
+        }
+
+        .file:hover {
+            color: #7939FF;
+            cursor: pointer;
+            font-size: 25px;
+        }
+    }
+
+    .passlist-info {
+        border-right: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+    }
+    .empty{
+        height: 100px;
+    }
+}

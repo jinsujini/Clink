@@ -1,0 +1,498 @@
+.myprofil {
+    position: relative;
+    margin-top: 150px;
+    margin-bottom: 250px;
+    width: 1400px;
+    height: 300px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .hide {
+        display: none !important;
+    }
+
+    .delmodaldiv {
+        position: absolute;
+        z-index: 100;
+        width: 500px;
+        height: 320px;
+        background-color: #BACCFF;
+        color: white;
+        padding: 60px 80px;
+        border-radius: 30px;
+        border: 1px solid #fff;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: 41px;
+            right: 20px;
+            top: 20px;
+            position: absolute;
+        }
+
+        .del {
+            vertical-align: top;
+            margin-top: 7px;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            background-color: #BACCFF;
+            border: none;
+            border-bottom: solid white;
+
+            &:hover {
+                color: #8953ff;
+                border-bottom: solid #8953ff;
+            }
+        }
+
+        .submitBox {
+            .btnSubmit {
+                width: 120px;
+                height: 40px;
+                margin: 30px auto;
+                margin-bottom: 5px;
+                display: block;
+                background: linear-gradient(0deg, #3757FF, #7E8BFF);
+                border: 1px solid white;
+                border-radius: 100px;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+
+        .badgelist {
+            margin: 20px auto;
+
+            #badgenamediv {
+                display: inline-block;
+                background-color: white;
+                border-radius: 25px;
+                padding: 10px 20px;
+                vertical-align: bottom;
+                margin: auto 50px;
+                box-shadow: 5px 5px 10px 0 grey inset;
+            }
+
+            #badgename {
+                font-size: 22px;
+                font-weight: bold;
+                background: linear-gradient(90deg, #7939FF, #1E5BFF);
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+        }
+
+        .btnSubmit {
+            width: 100px;
+            height: 38px;
+            border-radius: 30px;
+            color: #fff;
+            background: linear-gradient(0, #6F3EFF, #AE7EFF);
+            border: 1px solid #fff;
+            font-size: 24px;
+            font-weight: 600;
+
+        }
+    }
+
+    .modal-badge {
+        position: absolute;
+        z-index: 100;
+        width: 500px;
+        height: 320px;
+        background-color: #9D84C9;
+        color: white;
+        padding: 60px 80px;
+        border-radius: 30px;
+        border: 1px solid #fff;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        img {
+            width: 41px;
+            top: 20px;
+            right: 20px;
+            position: absolute;
+        }
+
+        .modaldiv {
+            position: relative;
+
+            
+            input{
+                outline: none;
+                font-size: 20px;
+                font-weight: 600;
+                color: white;
+                padding: 0 10px;
+            }
+        }
+
+        .formcolumn {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+      
+        .formtext {
+            font-size: 36px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+
+        .input {
+            width: 300px;
+            height: 45px;
+            border-radius: 10px;
+            background-color: rgba($color: #fff, $alpha: 0.3);
+            border: none;
+        }
+
+        .btnUpload {
+            display: flex;
+            font-size: 25px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: underline;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .submitBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .btnSubmit {
+            
+            width: 100px;
+            height: 38px;
+            border-radius: 30px;
+            color: #fff;
+            background: linear-gradient(0, #6F3EFF, #AE7EFF);
+            border: 1px solid #fff;
+            font-size: 20px;
+            font-weight: 600;
+
+        }
+        .fileform{
+            #file{
+                display: none;
+
+            }
+            label{
+                justify-content: center;
+                display: flex;
+                font-size: 30px;
+                text-decoration: underline;
+                font-weight: bold;
+                margin: 10px 0;
+                cursor: pointer;
+            }
+            .filename{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                color: black;
+                font-size: large;
+            }
+        }
+    }
+
+    .blur {
+        filter: blur(10px);
+
+    }
+
+    .wrap {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        #name {
+            padding-top: 100px;
+            position: relative;
+            font-weight: bold;
+            width: fit-content;
+
+            display: flex;
+            align-items: start;
+
+            #username {
+                width: auto;
+                font-family: 'PyeongChangPeace-Bold';
+                margin-top: -10px;
+                font-size: 60px;
+               
+                display: flex;
+               
+            }
+
+            .badgeBox {
+               width: 300px;
+                display: flex;
+                flex-direction: column;
+                padding: 0 20px;
+           
+            }
+
+            #badgenamediv {
+                display: inline-block;
+                background-color: white;
+                border-radius: 25px;
+                padding: 10px 20px;
+                vertical-align: bottom;
+                box-shadow: 5px 5px 10px 0 grey inset;
+                margin-bottom: 10px;
+            }
+
+            #badgename {
+                font-size: 22px;
+                background: linear-gradient(90deg, #7939FF, #1E5BFF);
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+
+            #badge {
+                display: flex;
+                font-size: 22px;
+                color: white;
+                text-align: center;
+            }
+
+            #badge1 {
+                margin-right: 15px;
+            }
+
+            #badge2 {
+                margin-left: 15px;
+            }
+
+            #badge1,
+            #badge2 {
+                border-bottom: solid 1px;
+                padding-bottom: 3px;
+            }
+
+            #badge1:hover,
+            #badge2:hover {
+                cursor: pointer;
+                color: #8953ff;
+            }
+
+            .btn {
+
+                display: flex;
+                justify-content: end;
+                font-size: 25px;
+                font-weight: bold;
+                
+                align-items: center;
+                >h3{ 
+                    font-size: 25px;
+                    margin: 0 10px;
+                    padding: 0;
+                    text-decoration: none;
+                }
+                >div{
+                    text-decoration: underline;
+                }
+
+                >div:hover {
+                    color: #6F3EFF;
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+        .profil {
+            display: flex;
+            align-items: center;
+            background-image: url('../../../img/my/profil_background.png');
+            width: 900px;
+            height: 274px;
+            background-size: cover;
+            justify-content: center;
+
+            .profil-img {
+                width: 304px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                .preview{
+                    object-fit: cover;
+                }
+
+                img {
+                    width: 168px;
+                    height: 168px;
+                   
+                }
+                .img-send{
+                    display: flex;
+                    position: absolute;
+                    bottom: -10px;
+                }
+                .plusbtn{
+                    
+                    width: 50px;
+                    height: 50px;
+                    
+                }
+                
+                input{
+                    display: none;
+                }
+            }
+
+            .profil-info {
+                list-style: none;
+                width: 498px;
+                padding: 20px 80px;
+                margin: 0;
+                overflow: hidden;
+
+                >div {
+                    display: flex;
+                    justify-content: space-between;
+                    border-bottom: 1px solid white;
+                    line-height: 0;
+                    margin: 20px 0;
+
+                    h3 {
+                        margin: 20px 0;
+                        font-size: 30px;
+                        font-weight: bold;
+                    }
+
+                    input:disabled {
+                        font-size: 30px;
+                        font-weight: bold;
+                        width: 200px;
+                        background-color: rgba($color: #fff, $alpha: 0);
+                        color: #fff;
+                        border: none;
+                        text-align: end;
+                        
+                    }
+                    input{
+                        font-size: 30px;
+                        font-weight: bold;
+                        width: 200px;
+                        background-color: rgba($color: #fff, $alpha: 0);
+                        color: #AE88FF;
+                        border: none;
+                        text-align: end;
+                        outline: none;
+                    }
+
+                    .majorSelectOption {
+                        color: #fff;
+                        font-size: 30px;
+                        font-weight: bold;
+                        width: auto;
+                        margin-bottom: 10px;
+                        background-color: rgba($color: #fff, $alpha: 0);
+                        border: none;
+                        text-align: end;
+                        text-align: end;
+                        outline: none;
+                        color: #fff;
+                        option{
+                            color: #fff;
+                            background-color: #BACCFF;
+                        }
+
+                    }
+
+                    
+
+                    .custom-select__menu {
+                        //리스트 속성
+                        font-size: 22px;
+                        color: #AE88FF;
+                        position: absolute;
+                        z-index: 100;
+                        height: 100px;
+                    }
+                }
+
+            }
+
+        }
+
+        .set-logout {
+            width: 100%;
+            justify-content: end;
+            display: flex;
+
+            .set,
+            .logout,
+            h3 {
+                display: flex;
+                font-size: 26px;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            h3 {
+                margin: 0 10px;
+            }
+
+            button {
+                background-color: rgba($color: #fff, $alpha: 0);
+                color: #fff;
+                display: flex;
+                text-decoration: underline;
+                border: none;
+            }
+
+            button:hover {
+                color: #6F3EFF;
+            }
+        }
+
+
+    }
+
+
+    //OnOff설정부분
+    .setdiv {
+        margin: 100px auto;
+
+        .onoff {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+
+            .onofftext {
+                width: 300px;
+                text-align: center;
+            }
+
+            .onOffBtn {
+                width: 200px;
+                height: 30px;
+                margin-right: auto;
+            }
+        }
+    }
+}

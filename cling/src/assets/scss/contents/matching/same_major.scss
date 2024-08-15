@@ -1,0 +1,100 @@
+.samemajor {
+    
+    .Matching{
+        background: linear-gradient(90deg,#3851FF,  #8037FF);
+        border: none !important;
+    }
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 200px;
+    display: flex;
+    align-items: center;
+
+    .text {
+        text-align: center;
+        margin: 30px;
+        margin-top: 150px;
+        font-size: 50px;
+        color: white;
+    }
+
+    .content {
+        width: 80%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .profileimg {
+        display: flex;
+        width: 291px;
+        height: 326px;
+        border-radius: 30px;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .profile-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        img {
+            width: 221px;
+            height: 251px;
+        }
+
+        .bubbleimg {
+            position: absolute;
+            top: 40px;
+            left: 230px;
+            text-align: center;
+
+            img {
+                width: 300px;
+                height: auto;
+            }
+
+            .bubble-text {
+                color: white;
+                position: absolute;
+                top: 15px;
+                left: 10px;
+                right: 10px;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 1.2;
+                word-wrap: break-word;
+            }
+        }
+    }
+
+    .profileimg1 {
+        margin-top: 50px;
+        margin-right: 700px;
+    }
+
+    .profileimg2 {
+        margin-left: 700px;
+        .bubbleimg {
+            top: 40px;
+            left: -230px;
+            .bubble-text {
+                right: 20px;
+            }
+        }
+    }
+
+    .profileimg3 {
+        margin-right: 700px;
+    }
+}

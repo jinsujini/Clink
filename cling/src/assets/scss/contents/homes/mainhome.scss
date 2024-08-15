@@ -1,0 +1,185 @@
+#mainhome {
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  color: white;
+  margin-bottom: 300px;
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+  }
+
+  .Home {
+    background: linear-gradient(90deg, #3851FF, #8037FF);
+    border: none !important;
+  }
+
+  .mainTitle {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    text-align: center;
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+    white-space: pre-wrap;
+  }
+
+  .swiper {
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 800px;
+    height: 400px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+  }
+
+  .imgBanner {
+    display: block;
+    border-radius: 30px; //둥근 모서리
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .down {
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-size: 30px;
+    z-index: 100;
+  }
+
+  .down img {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    bottom: -40px;
+  }
+
+  .down:hover {
+    cursor: pointer;
+  }
+
+  .myNoticeBox {
+    width: 830px;
+    margin: auto;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    text-align: right;
+
+    .myNotice {
+      cursor: pointer;
+      text-decoration: underline 1px;
+      text-underline-position: under;
+      display: inline-block;
+      width: auto;
+      font-size: 20px;
+      padding: 5px 10px;
+    }
+
+    .myNotice:hover {
+      color: #8953ff;
+    }
+  }
+
+  .tableBox {
+    width: 800px;
+    height: 400px;
+    overflow-y: scroll;
+    align-items: center;
+    margin: auto;
+    padding: 10px 50px;
+    padding-bottom: 50px;
+
+    .noNotices {
+      text-align: center;
+      margin-top: 150px;
+      font-size: 24px;
+    }
+
+    #notices {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: solid 0.1px white;
+      display: flex;
+    }
+
+    #notices:hover {
+      color: #7939FF;
+
+    }
+
+    .noticeDate {
+      text-align: left;
+      width: 150px;
+
+      font-size: 24px;
+    }
+
+    .noticeTitle {
+      text-align: left;
+      font-size: 24px;
+    }
+  }
+
+  #btnWrite {
+    position: relative;
+    width: 160px;
+    height: 40px;
+    margin: 100px auto;
+    display: block;
+    background: #7939FF;
+    border: none;
+    box-shadow: 5px 5px 10px 0 #4c1bb6 inset;
+    border-radius: 100px;
+    color: white;
+    font-size: 20px;
+    font-family: 'PyeongChangPeaced-Light';
+  }
+
+  .swiper-pagination {
+    bottom: 0px !important;
+  }
+
+  .swiper-pagination-bullet {
+    border: solid white !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white !important;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white; // 스크롤바 색상
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
+
+}

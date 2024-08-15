@@ -1,0 +1,165 @@
+#wantPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding-bottom: 400px;
+    
+    #title {
+        font-family: 'PyeongChangPeace-Bold';
+        font-size: 45px;
+        padding: 10px;
+        font-weight: bold;
+        padding-bottom: 100px;
+        margin-bottom: 50px;
+    }
+    #introduce {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; 
+        width: 500px; 
+        margin-top: 65px;
+        margin-left: -770px;
+        font-weight: bold;
+        font-size: 20px;
+    
+    .balloon1{
+        padding: 20px 30px;
+        width: auto;
+        height: 25px;
+        background: #5A45FF;
+        border-radius: 20px;
+        position: relative; 
+        z-index: 5;
+        margin-right: -40px;
+    }
+    .balloon2 {
+        padding: 10px 20px;
+        width: auto;
+        height: 25px;
+        margin-top: 20px;
+        background: #5A45FF;
+        border-radius: 30px;
+        position: relative; 
+        margin-right: 20px;
+        z-index: 5;
+        margin-right: -10px;
+    }
+      
+    .balloon1::after, .balloon2::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-bottom: 0;
+        border-right: 0; 
+        margin-bottom: 0; 
+     }
+     .balloon1::after {
+        z-index: -1;
+        bottom: -10px; 
+        right: 2px; 
+        transform: rotate(90deg); 
+        border: 25px solid transparent;
+        border-top-color: #5A45FF;
+    }
+    .balloon2::after{
+        z-index: -1;
+        bottom: -5px; 
+        right: 2px; 
+        transform: rotate(90deg); 
+        border: 12px solid transparent;
+        border-top-color: #5A45FF;
+    }
+    }
+
+    #box1 {
+        display: flex;
+        align-items: center;
+
+        #box2 {
+            width: 500px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        #nextButton, #prevButton {
+            font-size: 50px;
+            margin: auto 100px;
+        }
+        #nextButton:hover, #prevButton:hover {
+            cursor: pointer;
+        }
+
+
+        #circle {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 100px;
+            background-color: #8137FF;
+            margin-top: -370px;
+            margin-right: -330px;
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            z-index: 3;
+        }
+    }
+    
+    #yesOrNo {
+        display: flex;
+        gap: 25px;
+
+        .button {
+            padding: 8px;
+            background-color: black;
+            border-style: solid;
+            border-color: white;
+            border-radius: 100px;
+            color: white;
+            width: 130px;
+            font-size: 20px;
+        }
+        .button:hover {
+            background: linear-gradient(90deg, #3851FF, #8037FF);
+            border: none;
+        }
+    }
+    
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;  
+        align-items: center;  
+    }
+
+    .swiper-slide {
+        width: 350px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .swiper-slide img {
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        border: 45px solid white; 
+        border-radius: 50px;
+        box-sizing: border-box; 
+    }
+    .swiper-pagination-bullet {
+        border: solid white !important;
+    }
+    .swiper-pagination-bullet-active {
+        background: white !important;
+    }
+}

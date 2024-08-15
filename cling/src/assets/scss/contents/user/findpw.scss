@@ -1,0 +1,86 @@
+.findpw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    .empty{
+        height: 100px;
+    }
+    .popup {
+        position: absolute;
+        top: 20px;
+        z-index: 100;
+        width: 1020px;
+        height: 800px;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(3px);
+        display: flex;
+        justify-content: center;
+        
+        .alert{
+            width: 600px;
+            height: 139px;
+            border-radius: 30px;
+            background-color: #ffffff3d;
+            border: 1px solid #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h1{
+                color: #fff;
+                font-size: 25px;
+                font-weight: normal;
+            }
+        }
+
+    }
+
+    .wrap {
+        display: flex;
+        flex-direction: column;
+
+        input {
+            width: 450px;
+            height: 70px;
+            border-radius: 35px;
+            padding: 10px 30px;
+            margin: 20px 0;
+            font-size: 25px;
+            color: #AE88FF;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #AE88FF;
+        }
+
+        .email,
+        .checknumber {
+            position: relative;
+
+            button {
+                position: absolute;
+                right: 20px;
+                top: 45px;
+                width: 145px;
+                height: 50px;
+                color: #7939FF;
+                border-radius: 35px;
+                border: 1px solid #7939FF;
+                background-color: #fff;
+                font-size: 20px;
+                box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.215);
+            }
+
+            button:hover {
+                background: linear-gradient(90deg, #3851FF, #8037FF);
+                border: none;
+                color: white;
+            }
+        }
+        .checknumber>button{
+            width: 180px;
+        }
+    }
+}

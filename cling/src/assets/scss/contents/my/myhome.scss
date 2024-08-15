@@ -1,0 +1,21 @@
+.myhome {
+    .My{
+        background: linear-gradient(90deg,#3851FF,  #8037FF);
+        border: none !important;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  
+    >.myprofil{
+        padding-top: 150px;
+    }
+    text{
+        color:white;
+    }
+    
+    
+}
+
