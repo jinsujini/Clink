@@ -44,26 +44,34 @@ const Chat = () => {
   }, [userInfo.studentId]);
 
   const onMessageReceived = (message) => {
-    const parsedMessage = JSON.parse(message.body);
-    setMessages(prevMessages => [...prevMessages, parsedMessage]);
+    try {
+      const parsedMessage = JSON.parse(message.body);
+      setMessages(prevMessages => [...prevMessages, parsedMessage]);
+    } catch (error) {
+      console.error('Failed to parse WebSocket message:', error);
+    }
   };
 
   useEffect(() => {
-    axios.get(`https://clinkback.store/oldChat/${roomId}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
-    })
-    .then(response => {
-      if (response.data && response.data.chatEntities) {
-        setMessages(response.data.chatEntities);
-      }
-    })
-    .catch(error => {
-      console.error("Failed to fetch old chat messages:", error);
-    });
+    const fetchOldMessagesAndConnect = async () => {
+      try {
+        const response = await axios.get(`https://clinkback.store/oldChat/${roomId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
 
-    WebSocketService.connect(roomId, onMessageReceived);
+        if (response.data && response.data.chatEntities) {
+          setMessages(response.data.chatEntities);
+        }
+      } catch (error) {
+        console.error("Failed to fetch old chat messages:", error);
+      }
+
+      WebSocketService.connect(roomId, onMessageReceived);
+    };
+
+    fetchOldMessagesAndConnect();
 
     return () => {
       WebSocketService.disconnect();
@@ -79,7 +87,11 @@ const Chat = () => {
       })
       .then(response => {
         const sender = response.data;
+
+        // WebSocket으로 메시지를 전송
         WebSocketService.sendMessage(roomId, sender, inputMessage);
+
+        // 메시지를 보낸 후 inputMessage 상태를 비웁니다.
         setInputMessage('');
       })
       .catch(error => {
@@ -88,7 +100,6 @@ const Chat = () => {
     }
   };
 
-  // 이미지 리사이즈 및 압축 코드임
   const resizeImage = (file, maxWidth, maxHeight, callback) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -136,7 +147,6 @@ const Chat = () => {
       .then(response => {
         const sender = response.data;
 
-        // 이미지 압축하는 코드임
         resizeImage(file, 1024, 1024, (resizedBlob) => {
           const formData = new FormData();
           formData.append('imageFile', resizedBlob, file.name);
@@ -163,7 +173,9 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [messages]);
 
   return (

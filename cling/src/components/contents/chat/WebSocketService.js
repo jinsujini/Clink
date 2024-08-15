@@ -1,10 +1,11 @@
 import { Client } from '@stomp/stompjs';
+import SockJS from 'sockjs-client';
 
 const WebSocketService = {
     client: null,
 
     connect: (roomId, onMessageReceived) => {
-        const socket = new WebSocket('wss://13.48.207.238:1234/ws');
+        const socket = new SockJS('https://clinkback.store/ws');
         
         WebSocketService.client = new Client({
             webSocketFactory: () => socket,

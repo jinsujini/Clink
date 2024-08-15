@@ -19,6 +19,7 @@ const PassList = ({ department }) => {
             if (res.status === 200) {
                 console.log(res.data);
                 setPlan(res.data.step);
+                
                 setId(res.data.id);
 
             }
