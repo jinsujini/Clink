@@ -15,7 +15,6 @@ const NoticeList = ({ department }) => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res.data);
                     setNotice(res.data);
                 }
             })

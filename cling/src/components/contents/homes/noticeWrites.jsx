@@ -72,7 +72,6 @@ const NoticeWrites = () => {
     })
       .then(response => {
         if (response.status === 200) {
-          console.log(response);
           alert('게시글 등록이 완료되었습니다');
           navigate(-1);
         }
@@ -91,7 +90,6 @@ const NoticeWrites = () => {
     })
       .then((response) => {
         const fetchedPositions = response.data.positions;
-        console.log(fetchedPositions);
         setPositions(fetchedPositions);
 
         if (fetchedPositions.length > 0) {

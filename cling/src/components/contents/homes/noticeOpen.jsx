@@ -39,7 +39,6 @@ const NoticeOpen = () => {
         const base64Images = response.data.images.map(image => `data:image/jpeg;base64,${image.attachmentByteList}`);
         setImages(base64Images);
         setIsLoading(false); // 데이터 로드 완료
-        console.log('게시글 가져오기 완료:', response);
       })
       .catch((error) => {
         console.error('게시글을 가져오는 중 오류가 발생했습니다.', error);
@@ -55,7 +54,6 @@ const NoticeOpen = () => {
     })
       .then((response) => {
         setCurrentUserId(response.data.toString());
-        console.log('userId:', response);
       })
       .catch((error) => {
         console.error('userId를 가져오지 못했습니다.', error);
@@ -77,7 +75,6 @@ const NoticeOpen = () => {
       })
         .then(response => {
           alert('게시글이 삭제되었습니다');
-          console.log('삭제되었습니다', response);
           navigate(-1);
         })
         .catch(error => {

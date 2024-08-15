@@ -17,7 +17,6 @@ const Support = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res.data);
                     setApply(res.data);
                     setLoading(false);
                 }
@@ -47,7 +46,6 @@ const Support = () => {
             })
                 .then(res => {
                     if (res.status === 200) {
-                        console.log(res.data);
                         fetchSupport();
                         
                     }

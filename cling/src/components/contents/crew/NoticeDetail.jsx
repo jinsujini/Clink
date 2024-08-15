@@ -37,7 +37,6 @@ const NoticeDetail = () => {
                     setRecruiting(res.data);
                     setLoading(false);
                     applyCheck();
-                    console.log(res);
                 }
             })
             .catch(err => {
@@ -76,7 +75,6 @@ const NoticeDetail = () => {
             .then(res => {
                 if (res.status === 200) {
                     setCheck(res.data);
-                    console.log(res.data);
                 }
             })
             .catch(err => {
@@ -106,7 +104,6 @@ const NoticeDetail = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     alert('지원서가 성공적으로 전송되었습니다.');
                     navigate(-1);
                 }

@@ -51,7 +51,6 @@ const Create = () => {
             })
                 .then(res => {
                     if (res.status === 200) {
-                        console.log(res);
                         alert('회원가입 성공! 로그인 페이지로 이동합니다.')
                         navigate('/login');
                     }

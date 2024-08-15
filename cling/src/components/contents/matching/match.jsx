@@ -69,7 +69,6 @@ const Match = () => {
     };
 
     const enterChatRoom = (user) => {
-        console.log(`Bearer ${localStorage.getItem('accessToken')}`)
         axios.get(`https://clinkback.store/roomEnter?id2=${user.studentId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`

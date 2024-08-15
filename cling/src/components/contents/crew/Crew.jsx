@@ -33,7 +33,6 @@ const Crew = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     setMyCrew(res.data);
                     setLoading(false);
                 }

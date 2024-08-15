@@ -29,7 +29,6 @@ const Position = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     alert('직책 및 크루 신청이 완료 되었습니다. 승인 완료시 자동 추가 됩니다.');
                     setName('');
                     setStudentId('');

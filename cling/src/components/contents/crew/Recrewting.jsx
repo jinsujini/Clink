@@ -14,7 +14,6 @@ const Recrewting = ({ department }) => {
         })
             .then(res => {
                 if (res.status === 200 && res.data) {
-                    console.log(res.data);
                     setNotice(res.data);
                 }
             })

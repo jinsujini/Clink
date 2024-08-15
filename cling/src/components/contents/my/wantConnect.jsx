@@ -76,7 +76,6 @@ const WantConnect = () => {
         })
         .then(response => {
             if (response.status === 200) {
-                console.log(response);
                 alert('연결되었습니다!');
                 showWantConnect();
             }
@@ -100,7 +99,6 @@ const WantConnect = () => {
         })
         .then(response => {
             if (response.status === 200) {
-                console.log(response);
                 alert('거절되었습니다.');
                 showWantConnect();
             }

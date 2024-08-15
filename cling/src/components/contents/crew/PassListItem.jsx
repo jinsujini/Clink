@@ -61,7 +61,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
                     console.error(res.data);
                     setStudents([]);
                 }
-               
+
             })
             .catch(err => {
                 console.error(err);
@@ -74,25 +74,24 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-        .then(res => {
-            if (res.status === 200) {
-                console.log(res.data);
-                setTitle(res.data.title);
-                setActive(parseInt(step) === parseInt(res.data.onStep));
-    
-              
-                if (parseInt(step) + 1 === parseInt(res.data.onStep)) {
-                    setEndStep(true);
-                } else {
-                    setEndStep(false);
+            .then(res => {
+                if (res.status === 200) {
+                    setTitle(res.data.title);
+                    setActive(parseInt(step) === parseInt(res.data.onStep));
+
+
+                    if (parseInt(step) + 1 === parseInt(res.data.onStep)) {
+                        setEndStep(true);
+                    } else {
+                        setEndStep(false);
+                    }
                 }
-            }
-        })
-        .catch(err => {
-            console.error(err);
-        });
+            })
+            .catch(err => {
+                console.error(err);
+            });
     };
-    
+
 
     const handleSaveResults = () => {
         if (isComplete) {
@@ -103,7 +102,6 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
             })
                 .then(res => {
                     if (res.status === 200) {
-                        console.log(res);
                         alert('합격 및 불합격 정보가 저장되었습니다.');
                     }
                 })
@@ -138,7 +136,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
+                    setLoading(true);
                     const url = window.URL.createObjectURL(new Blob([res.data]));
                     const link = document.createElement('a');
                     link.href = url;
@@ -146,6 +144,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
+                    setLoading(false);
                 }
             })
             .catch(err => {
@@ -231,9 +230,11 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
 
             <button className="send" onClick={handleSaveResults} disabled={!active}>합/불 입력 완료</button>
             <p className="send-text">※ 합/불 입력 완료 이후 지원자에게 메일이 발송되며 합/불 수정이 불가능합니다. </p>
+
             {endStep &&
                 <List department={department} title={title} step={plan} />
             }
+
 
         </div>
     );

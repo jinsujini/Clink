@@ -28,7 +28,6 @@ const Mainhome = () => {
   }, []);
 
   const allNotice = () => {
-    console.log(`Bearer ${localStorage.getItem('accessToken')}`);
     axios.get('https://clinkback.store/notice', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -37,7 +36,7 @@ const Mainhome = () => {
       .then((response) => {
         setNoticeAll(response.data);
         user();
-        console.log(response.data);
+
         setLoading(false);
       })
       .catch((error) => {
@@ -67,7 +66,6 @@ const Mainhome = () => {
       },
     })
       .then((response) => {
-        console.log(response.data);
         setPositions(response.data.positions);
       })
       .catch((error) => {
@@ -91,7 +89,6 @@ const Mainhome = () => {
   };
 
   const goNoticeOpen = (id) => {
-    console.log(`공지사항 상세보기 페이지로 이동합니다. ID: ${id}`);
     navigate(`/noticeOpen/${id}`);
     window.scrollTo(0, 0);
   };

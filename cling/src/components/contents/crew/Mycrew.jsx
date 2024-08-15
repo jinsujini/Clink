@@ -20,7 +20,6 @@ const Mycrew = () => {
 
     useEffect(() => {
         const encodedDepartment = encodeURIComponent(department);
-        console.log(decodeURIComponent(encodedDepartment));
         axios.get(`https://clinkback.store/applications/${decodeURIComponent(encodedDepartment)}/info`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -28,7 +27,6 @@ const Mycrew = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     setMyCrew(res.data);
                     setLoading(false);
                 }

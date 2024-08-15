@@ -14,14 +14,12 @@ const CheckSchool = () => {
             email: email
         })
             .then((res) => {
-                if (res.status === 200) {
-                    
+                if (res.status === 200) {                  
                     alert('메일로 인증번호가 전송되었습니다');
-                    console.log(res);
                 }
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
             });
     }
     const authCheck = () => {
@@ -33,13 +31,11 @@ const CheckSchool = () => {
                 if (res.status === 200) {
                     const accessToken = res.data.access;
                     localStorage.setItem('accessToken', accessToken);
-                    alert('인증에 성공했습니다.');
-                    console.log(res);
-                    navigate('/create/info')
+                    alert('인증에 성공했습니다.');                    navigate('/create/info')
                 }
             })
             .catch((err) => {
-                console.log(err);
+                console.error(err);
                 alert('인증 번호가 일치하지 않거나 유효하지 않습니다');
             });
     }

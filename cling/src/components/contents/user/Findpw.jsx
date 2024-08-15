@@ -61,7 +61,6 @@ const Findpw = () => {
       .then(res => {
         if (res.status === 200) {
           setPasswordReset(true);
-          console.log(res);
         }
       })
       .catch(err => {

@@ -7,7 +7,7 @@ import left from '../../../assets/img/crew/left.png';
 import Trash from '../../../assets/img/crew/Trash.png';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import Compressor from 'compressorjs'; 
+import Compressor from 'compressorjs';
 
 const NoticeWrite = () => {
     const { department } = useParams();
@@ -41,7 +41,6 @@ const NoticeWrite = () => {
         })
             .then(res => {
                 if (res.status === 200) {
-                    console.log(res);
                     navigate(-1);
                 }
             })
@@ -66,7 +65,7 @@ const NoticeWrite = () => {
 
         files.forEach(file => {
             new Compressor(file, {
-                quality: 0.3, 
+                quality: 0.3,
                 success(result) {
                     setImages(prevImages => [...prevImages, result]);
                     setImageNames(prevNames => [...prevNames, result.name]);
@@ -149,10 +148,10 @@ const NoticeWrite = () => {
                                 {imageNames.map((name, index) => (
                                     <div key={index} className="file-item">
                                         <p className="file-name">{name}</p>
-                                        <img 
-                                            src={Trash} 
-                                            alt="삭제" 
-                                            className="trash-icon" 
+                                        <img
+                                            src={Trash}
+                                            alt="삭제"
+                                            className="trash-icon"
                                             onClick={() => removeImage(index)}
                                         />
                                     </div>
@@ -164,10 +163,10 @@ const NoticeWrite = () => {
                                 {fileNames.map((name, index) => (
                                     <div key={index} className="file-item">
                                         <p className="file-name">{name}</p>
-                                        <img 
-                                            src={Trash} 
-                                            alt="삭제" 
-                                            className="trash-icon" 
+                                        <img
+                                            src={Trash}
+                                            alt="삭제"
+                                            className="trash-icon"
                                             onClick={() => removeFile(index)}
                                         />
                                     </div>

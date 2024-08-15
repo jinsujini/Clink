@@ -58,7 +58,6 @@ const NoticeEdit = () => {
       setContent(content);
       const imageNames = images.map(img => img.originAttachmentName);
       setFileNames(imageNames); // 기존 이미지 이름 
-      console.log('수정 페이지를 열었습니다', response);
       setIsLoading(false);
     })
     .catch((error) => {
@@ -92,7 +91,6 @@ const NoticeEdit = () => {
     })
     .then(response => {
         if (response.status === 200) {
-            console.log(response);
             alert('게시글 수정이 완료되었습니다');
             navigate(-1);
         }

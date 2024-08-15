@@ -459,8 +459,8 @@
         }
 
         .recrew-notice,
-        .recrew,
-        .list-down {
+        .recrew
+         {
 
             margin-left: 50px;
 
@@ -614,6 +614,8 @@
 
     .list-down {
         color: #fff;
+
+       position: absolute;
 
         .file {
             margin-left: 40px;
