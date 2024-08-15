@@ -588,6 +588,12 @@
                 align-items: center;
 
             }
+            .send:disabled{
+                cursor: not-allowed;
+                background-color: #8c8b8b7d;
+                color: #333333;
+                border: 1px solid black;
+            }
 
             >button:hover {
                 background: linear-gradient(90deg, #3851FF, #8037FF);

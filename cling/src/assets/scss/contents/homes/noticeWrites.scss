@@ -5,6 +5,42 @@
     align-items: center;
     color: white;
     margin-bottom: 300px;
+   .wrap{
+    display: flex;
+    align-items: center;
+    h2{
+        margin-right: 10px;
+        padding-bottom: 5px;
+    }
+    .badge {
+        background-color: #fff;
+        margin-bottom: 10px;
+    
+        width: fit-content;
+        height: 25px;
+        padding: 10px 15px;
+        border-radius: 30px;
+        align-items: center;
+        display: flex;
+        box-shadow: inset -5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+
+        .text {
+            background: linear-gradient(90deg, #3851FF, #8037FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 20px;
+            font-weight: bolder;
+            outline: none;
+            border: none;
+            height: 25px;
+            padding-bottom: 10px ;
+
+        }
+
+    }
+   }
+   
 
     .form{
         display: flex;
@@ -12,10 +48,11 @@
         flex-direction: column;
         margin-top: 100px;
         margin-bottom: 30px;
+        position: relative;
         
         #title{
             font-size: 48px;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
             background-color: black;
             text-align: center;
             border: none;

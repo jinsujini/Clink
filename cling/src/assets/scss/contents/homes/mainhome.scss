@@ -122,6 +122,9 @@
       padding: 10px;
       border-bottom: solid 0.1px white;
       display: flex;
+      align-items: center;
+      position: relative;
+      margin-bottom: 10px;
     }
 
     #notices:hover {
@@ -140,6 +143,31 @@
       text-align: left;
       font-size: 24px;
     }
+    
+    .badge {
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      margin-right: 10px;
+      width: fit-content;
+      height: 20px;
+      padding: 10px 15px;
+      border-radius: 30px;
+      align-items: center;
+      display: flex;
+      box-shadow: inset -5px 5px 10px 2px rgba(0, 0, 0, 0.2);
+
+      .text {
+          background: linear-gradient(90deg, #3851FF, #8037FF);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-size: 18px;
+          font-weight: bolder;
+
+      }
+
+  }
   }
 
   #btnWrite {

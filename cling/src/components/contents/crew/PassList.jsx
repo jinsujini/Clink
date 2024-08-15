@@ -19,7 +19,6 @@ const PassList = ({ department }) => {
             if (res.status === 200) {
                 console.log(res.data);
                 setPlan(res.data.step);
-                
                 setId(res.data.id);
 
             }
@@ -60,7 +59,7 @@ const PassList = ({ department }) => {
                 <div className='passlist-item'>합/불</div>
             </div>
            
-            <PassListItem department = {department} onStep = {viewPlan} recruitingId={id}  plan = {plan} />
+            <PassListItem department = {department} step = {viewPlan} recruitingId={id}  plan = {plan} />
         </div>
     );
 };

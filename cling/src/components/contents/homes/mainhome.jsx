@@ -17,15 +17,18 @@ const Mainhome = () => {
   const [noticeAll, setNoticeAll] = useState([]);
   const [myNotices, setMyNotices] = useState([]);
   const [showMyNotices, setShowMyNotices] = useState(false);
+  const [positions, setPositions] = useState([]);
 
   const sortedNotices = [...noticeAll].reverse();
   const latestNotices = sortedNotices.slice(0, 5);
 
   useEffect(() => {
+
     allNotice();
   }, []);
 
   const allNotice = () => {
+    console.log(`Bearer ${localStorage.getItem('accessToken')}`);
     axios.get('https://clinkback.store/notice', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -33,6 +36,7 @@ const Mainhome = () => {
     })
       .then((response) => {
         setNoticeAll(response.data);
+        user();
         console.log(response.data);
         setLoading(false);
       })
@@ -50,19 +54,33 @@ const Mainhome = () => {
     })
       .then((response) => {
         setMyNotices(response.data);
-        console.log('내 글 목록:', response.data);
       })
       .catch((error) => {
         console.error('내 글 목록을 찾을 수 없습니다.', error);
-        alert('내 글 목록을 찾을 수 없습니다.');
+      });
+  }
+
+  const user = () => {
+    axios.get('https://clinkback.store/api/my-page/position-and-crew', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        setPositions(response.data.positions);
+      })
+      .catch((error) => {
+        console.error(error);
+
       });
   }
 
   const handleMyNotice = () => {
     if (showMyNotices) {
-      allNotice(); 
+      allNotice();
     } else {
-      fetchMyNotices(); 
+      fetchMyNotices();
     }
     setShowMyNotices(!showMyNotices);
   };
@@ -87,7 +105,7 @@ const Mainhome = () => {
     <div id="mainhome">
       <Header />
       {loading ? (
-       <Loading />
+        <Loading />
       ) : (
         <motion.div
           variants={fadeIn}
@@ -109,21 +127,21 @@ const Mainhome = () => {
 
               return (
                 <>
-                <SwiperSlide key={index} className="Slide" onClick={() => goNoticeOpen(notice.id)}>
-                  <img src={imageSrc} alt={`slide-${index}`} className="imgBanner" />
-                  <div className="mainTitle">
-                    <div>{notice.title}</div>
-                    <div className="down" onClick={() => goNoticeOpen(notice.id)}>
-                  <img src={Down} alt="" />
-                </div>
-                  </div>
-                </SwiperSlide>
-               
+                  <SwiperSlide key={index} className="Slide" onClick={() => goNoticeOpen(notice.id)}>
+                    <img src={imageSrc} alt={`slide-${index}`} className="imgBanner" />
+                    <div className="mainTitle">
+                      <div>{notice.title}</div>
+                      <div className="down" onClick={() => goNoticeOpen(notice.id)}>
+                        <img src={Down} alt="" />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+
                 </>
               );
             })}
           </Swiper>
-         
+
           <div className="myNoticeBox">
             <div className="myNotice" onClick={handleMyNotice}>
               {showMyNotices ? '전체 글 보기' : '내 글만 보기'}
@@ -144,12 +162,17 @@ const Mainhome = () => {
                 <div id="notices" onClick={() => goNoticeOpen(notice.id)}>
                   <div className="noticeDate">{notice.createdDate}</div>
                   <div className="noticeTitle">{notice.title}</div>
+                  <div className="badge">
+                    <div className="text">{notice.position}</div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
           <div>
-            <button id="btnWrite" onClick={goNoticeWrite}>글 작성하기</button>
+            {positions.length > 0 &&
+              <button id="btnWrite" onClick={goNoticeWrite}>글 작성하기</button>
+            }
           </div>
         </motion.div>
       )}

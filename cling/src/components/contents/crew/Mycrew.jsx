@@ -61,12 +61,7 @@ const Mycrew = () => {
                 </div>
                 <NoticeList department={department} />
                 <Recrewting department={department} />
-                {myCrew && (
-                    <List
-                        department={myCrew.department || ""}
-                        step={myCrew.step || ""}
-                        title={myCrew.title || ""}
-                    />)}
+               
             </motion.div>
             <div className="empty"></div>
             <div className="empty"></div>

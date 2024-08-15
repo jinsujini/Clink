@@ -2,27 +2,34 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../../assets/scss/contents/crew/passlist.scss';
 import { motion } from 'framer-motion';
+import List from './List';
 import Spinner from '../../../assets/img/loading.gif';
 
-const PassListItem = ({ department, plan, recruitingId , onStep}) => {
+const PassListItem = ({ department, plan, recruitingId, step }) => {
     const [students, setStudents] = useState([]);
     const [results, setResults] = useState({});
     const [isComplete, setIsComplete] = useState(false);
     const [first, setFirst] = useState(true);
     const [loading, setLoading] = useState(true);
+    const [active, setActive] = useState(false);
+    const [title, setTitle] = useState('');
+    const [endStep, setEndStep] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         fetchStudents();
 
-        if (plan === '2') {
+        if (step === '2') {
             setFirst(false);
             fetchStudents();
+            fetchinfo();
         } else {
             setFirst(true);
             fetchStudents();
+            fetchinfo();
         }
-    }, [onStep]);
+    }, [step]);
+
 
     useEffect(() => {
         checkCompletion();
@@ -30,7 +37,8 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
 
     useEffect(() => {
         fetchStudents();
-    }, [onStep]);
+        fetchinfo();
+    }, [step]);
 
     const fetchStudents = () => {
         axios.get(`https://clinkback.store/applications/${department}`, {
@@ -53,17 +61,42 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
                     console.error(res.data);
                     setStudents([]);
                 }
+               
             })
             .catch(err => {
                 console.error(err);
                 setStudents([]);
             });
     };
-
+    const fetchinfo = () => {
+        axios.get(`https://clinkback.store/applications/${department}/info`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => {
+            if (res.status === 200) {
+                console.log(res.data);
+                setTitle(res.data.title);
+                setActive(parseInt(step) === parseInt(res.data.onStep));
+    
+              
+                if (parseInt(step) + 1 === parseInt(res.data.onStep)) {
+                    setEndStep(true);
+                } else {
+                    setEndStep(false);
+                }
+            }
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    };
+    
 
     const handleSaveResults = () => {
-        if (isComplete && (plan === onStep)) {
-            axios.put(`https://clinkback.store/updateResults?step=${onStep}&recruitingId=${recruitingId}`, results, {
+        if (isComplete) {
+            axios.put(`https://clinkback.store/updateResults?step=${plan}&recruitingId=${recruitingId}`, results, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -105,6 +138,7 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
         })
             .then(res => {
                 if (res.status === 200) {
+                    console.log(res);
                     const url = window.URL.createObjectURL(new Blob([res.data]));
                     const link = document.createElement('a');
                     link.href = url;
@@ -155,6 +189,7 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
                                         <button
                                             className={`select-pass ${getButtonClass(results[student.studentId])}`}
                                             onClick={() => handlePassClick(student.studentId)}
+                                            disabled={!active}
                                         >
                                             {getButtonLabel(results[student.studentId])}
                                         </button>
@@ -180,6 +215,7 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
                                                 <button
                                                     className={`select-pass ${getButtonClass(results[student.studentId])}`}
                                                     onClick={() => handlePassClick(student.studentId)}
+                                                    disabled={!active}
                                                 >
                                                     {getButtonLabel(results[student.studentId])}
                                                 </button>
@@ -193,8 +229,12 @@ const PassListItem = ({ department, plan, recruitingId , onStep}) => {
                 </>
             )}
 
-            <button className="send" onClick={handleSaveResults}>합/불 입력 완료</button>
+            <button className="send" onClick={handleSaveResults} disabled={!active}>합/불 입력 완료</button>
             <p className="send-text">※ 합/불 입력 완료 이후 지원자에게 메일이 발송되며 합/불 수정이 불가능합니다. </p>
+            {endStep &&
+                <List department={department} title={title} step={plan} />
+            }
+
         </div>
     );
 };

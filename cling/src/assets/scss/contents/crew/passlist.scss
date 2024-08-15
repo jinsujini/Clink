@@ -63,6 +63,9 @@
             font-weight: 500;
             color: #fff;
         }
+        .select-pass:disabled{
+            cursor: not-allowed;
+        }
         .noselect{
             background-color: #535353;
             
