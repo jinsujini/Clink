@@ -198,7 +198,7 @@ const Chat = () => {
 
         <div className="chat-messages">
           {messages.map((msg, index) => (
-            <div key={index} className={`chat-message ${msg.sender === userInfo.studentNumber ? 'me' : 'other'}`}>
+            <div key={index} className={`chat-message ${msg.sender === userInfo.studentId ? 'other' : 'me'}`}>
               {msg.imageBytes ? (
                 <img src={`data:image/jpeg;base64,${msg.imageBytes}`} alt="sent image" className="sent-image" />
               ) : (
