@@ -7,12 +7,14 @@ import Header from '../../Header';
 import Bubble1 from '../../../assets/img/matching/speech-bubble1.png';
 import Bubble2 from '../../../assets/img/matching/speech-bubble2.png';
 import axios from 'axios';
+import Loading from './loading';
 
 const Samemajor = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const profiles = location.state?.profiles || [];
     const [profileImages, setProfileImages] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const containerVariants = {
         hidden: {},
@@ -43,6 +45,12 @@ const Samemajor = () => {
             profiles.forEach(profile => {
                 fetchProfileImage(profile.studentId);
             });
+        
+            setLoading(false);
+        }
+        else{
+            
+            setLoading(false);
         }
     }, [profiles]);
 
@@ -53,12 +61,14 @@ const Samemajor = () => {
             },
         })
             .then(response => {
+              
                 if (response.data && response.data.imageByte) {
                     setProfileImages(prevImages => ({
                         ...prevImages,
                         [studentId]: `data:image/jpeg;base64,${response.data.imageByte}`
                     }));
                 }
+                console.log(response);
             })
             .catch(err => {
                 console.error(`Failed to fetch profile image for studentId ${studentId}:`, err);
@@ -68,53 +78,57 @@ const Samemajor = () => {
     return (
         <div className='samemajor'>
             <Header />
-            {profiles.length > 0 ? (
-                <>
-                    <div>
-                        <h1 className="text">크링된 수정이를 확인해보세요</h1>
-                    </div>
-                    <motion.div
-                        className='content'
-                        ref={containerRef}
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate={containerControls}
-                    >
-                        {profiles.map((profile, index) => (
-                            <motion.div
-                                key={profile.studentId}
-                                className={`profileimg profileimg${index + 1}`}
-                                variants={profileVariants}
-                            >
-                                <Link 
-                                    to={`/matchprofile/${profile.studentId}`} 
-                                    className="profile-link"
-                                    state={{ profiles }}
+            {loading ? (
+                <Loading />
+            ) : (<>
+                {profiles.length > 0 ? (
+                    <>
+                        <div>
+                            <h1 className="text">크링된 수정이를 확인해보세요</h1>
+                        </div>
+                        <motion.div
+                            className='content'
+                            ref={containerRef}
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate={containerControls}
+                        >
+                            {profiles.map((profile, index) => (
+                                <motion.div
+                                    key={profile.studentId}
+                                    className={`profileimg profileimg${index + 1}`}
+                                    variants={profileVariants}
                                 >
-                                    <img 
-                                        src={profileImages[profile.studentId] || ''} 
-                                        alt="프로필사진" 
-                                    />
-                                    <div className="bubbleimg">
-                                        <img src={index % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
-                                        <div className="bubble-text">
-                                            {profile.studentId} {profile.name}입니다.
+                                    <Link
+                                        to={`/matchprofile/${profile.studentId}`}
+                                        className="profile-link"
+                                        state={{ profiles }}
+                                    >
+                                        <img
+                                            src={profileImages[profile.studentId] || ''}
+                                            alt="프로필사진"
+                                        />
+                                        <div className="bubbleimg">
+                                            <img src={index % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
+                                            <div className="bubble-text">
+                                                {profile.studentId} {profile.name}입니다.
+                                            </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </>
-            ) : (
-                <div className="no-profiles">
-                    <p>크링할 수정이가 없습니다.<br></br>
-                    타 과 수정이와 크링해보세요!</p>
-                    <button className="other-major-button" onClick={() => navigate('/match/info')}>
-                        타 과 Clink
-                    </button>
-                </div>
-            )}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </>
+                ) : (
+                    <div className="no-profiles">
+                        <p>크링할 수정이가 없습니다.<br></br>
+                            타 과 수정이와 크링해보세요!</p>
+                        <button className="other-major-button" onClick={() => navigate('/match/info')}>
+                            타 과 Clink
+                        </button>
+                    </div>
+                )}
+            </>)}
         </div>
     );
 };

@@ -20,7 +20,6 @@ const majorLists = [
     { value: '미디어커뮤니케이션학과', label: '미디어커뮤니케이션학과' },
     { value: '경영학부', label: '경영학부' },
     { value: '사회복지학과', label: '사회복지학과' },
-    { value: '법학부', label: '법학부' },
     { value: '의류산업학과', label: '의류산업학과' },
     { value: '소비자생활문화산업학과', label: '소비자생활문화산업학과' },
     { value: '뷰티산업학과', label: '뷰티산업학과' },

@@ -10,7 +10,7 @@ const CheckSchool = () => {
     const navigate = useNavigate();
 
     const sendMail = () => {
-        axios.post('http://13.48.207.238:1234/mailSend', {
+        axios.post('https://clinkback.store/mailSend', {
             email: email
         })
             .then((res) => {
