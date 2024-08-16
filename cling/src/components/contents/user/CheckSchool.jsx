@@ -13,10 +13,10 @@ const CheckSchool = () => {
     const sendMail = () => {
         // 이메일 형식 검증
         if (!email.endsWith('@sungshin.ac.kr')) {
-            setError('이메일은 @sungshin.ac.kr로 끝나야 합니다.');
+            alert('이메일은 @sungshin.ac.kr로 끝나야 합니다.');
             return;
         }
-
+        else{
         axios.post('https://clinkback.store/mailSend', { email })
             .then((res) => {
                 if (res.status === 200) {
@@ -27,6 +27,7 @@ const CheckSchool = () => {
             .catch((err) => {
                 console.error(err);
             });
+        }
     };
 
     const authCheck = () => {
