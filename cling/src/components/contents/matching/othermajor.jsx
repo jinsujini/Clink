@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Header';
 import '../../../assets/scss/contents/matching/other_major.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Bubble1 from '../../../assets/img/matching/speech-bubble1.png';
@@ -9,14 +9,12 @@ import Bubble2 from '../../../assets/img/matching/speech-bubble2.png';
 import SmallBubble1 from '../../../assets/img/matching/small-speech-bubble1.png';
 import SmallBubble2 from '../../../assets/img/matching/small-speech-bubble2.png';
 import axios from 'axios';
-import Loading from './loading';
 
 const OtherMajor = () => {
     const location = useLocation();
+    const navigate = useNavigate();
     const profiles = location.state?.profiles || [];
     const [profileImages, setProfileImages] = useState({});
-    const [loading, setLoading] = useState(true);
-
 
     const containerVariants = {
         hidden: {},
@@ -63,7 +61,6 @@ const OtherMajor = () => {
                         [studentId]: `data:image/jpeg;base64,${response.data.imageByte}`
                     }));
                 }
-                setLoading(false);
             })
             .catch(err => {
                 console.error(`Failed to fetch profile image for studentId ${studentId}:`, err);
@@ -71,54 +68,62 @@ const OtherMajor = () => {
     };
 
     return (
-        <>
+        <div className='othermajor'>
             <Header />
-            {loading ? (
-                <Loading />
-            ) : (<div className='othermajor'>
-            <div>
-                <h1 className="text">크링된 다른 과 수정이를 확인해보세요</h1>
-            </div>
-            <motion.div 
-                className='content' 
-                ref={containerRef} 
-                variants={containerVariants}
-                initial="hidden"
-                animate={containerControls}
-            >
-                {profiles.map((profile, index) => (
-                    <motion.div
-                        key={profile.studentId}
-                        className={`profileimg profileimg${index + 1}`}
-                        variants={profileVariants}
+            {profiles.length > 0 ? (
+                <>
+                    <div>
+                        <h1 className="text">크링된 다른 과 수정이를 확인해보세요</h1>
+                    </div>
+                    <motion.div 
+                        className='content' 
+                        ref={containerRef} 
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate={containerControls}
                     >
-                        <Link
-                            to={`/matchprofile/${profile.studentId}`}
-                            className="profile-link"
-                            state={{ profiles }}
-                        >
-                            <img 
-                                src={profileImages[profile.studentId] || ''} 
-                                alt="프로필사진" 
-                            />
-                            <div className="bubbleimg">
-                                <img src={index % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
-                                <div className="bubble-text">
-                                    {profile.studentId} {profile.name}입니다.
-                                </div>
-                            </div>
-                            <div className="smallbubbleimg">
-                                <img src={index % 2 === 0 ? SmallBubble1 : SmallBubble2} alt="말풍선" />
-                                <div className="bubble-text">
-                                    {profile.major}
-                                </div>
-                            </div>
-                        </Link>
+                        {profiles.map((profile, index) => (
+                            <motion.div
+                                key={profile.studentId}
+                                className={`profileimg profileimg${index + 1}`}
+                                variants={profileVariants}
+                            >
+                                <Link
+                                    to={`/matchprofile/${profile.studentId}`}
+                                    className="profile-link"
+                                    state={{ profiles }}
+                                >
+                                    <img 
+                                        src={profileImages[profile.studentId] || ''} 
+                                        alt="프로필사진" 
+                                    />
+                                    <div className="bubbleimg">
+                                        <img src={profile.studentId % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
+                                        <div className="bubble-text">
+                                            {profile.studentId} {profile.name}입니다.
+                                        </div>
+                                    </div>
+                                    <div className="smallbubbleimg">
+                                        <img src={profile.studentId % 2 === 0 ? SmallBubble1 : SmallBubble2} alt="말풍선" />
+                                        <div className="bubble-text">
+                                            {profile.major}
+                                        </div>
+                                    </div>
+                                </Link>
+                            </motion.div>
+                        ))}
                     </motion.div>
-                ))}
-            </motion.div>
-            </div>)}
-        </>
+                </>
+            ) : (
+                <div className="no-profiles">
+                    <p>크링할 타 과 수정이가 없습니다.<br></br>
+                    같은 과 수정이와 크링해보세요!</p>
+                    <button className="same-major-button" onClick={() => navigate('/match/info')}>
+                        같은 과 Clink
+                    </button>
+                </div>
+            )}
+        </div>
     );
 };
 
