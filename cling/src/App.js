@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Router, Routes, useNavigation } from 'react-router-dom'
 import Checkschool from "./components/contents/user/CheckSchool";
 import Landing from './components/landing';
 import NoticeWrite from './components/contents/crew/NoticeWrite';
@@ -34,8 +34,9 @@ import PassList from './components/contents/crew/PassList';
 import './assets/scss/section/base.scss'
 
 function App() {
-    const [accessToken, setAccessToken] = useState('')
-    const [login, setLogin] = useState(false)
+    const [accessToken, setAccessToken] = useState('');
+    const [login, setLogin] = useState(false);
+    const navigate = useNavigation();
 
 
     useEffect(() => {
@@ -55,9 +56,11 @@ function App() {
                     }
                 })
                 .catch((err) => {
+                    navigate('/login')
                     console.log(err)
                 })
         } else {
+            navigate('/login')
             setLogin(false)
         }
     }, [accessToken])
