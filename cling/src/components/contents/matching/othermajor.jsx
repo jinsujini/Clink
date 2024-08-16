@@ -113,13 +113,13 @@ const OtherMajor = () => {
                                             alt="프로필사진"
                                         />
                                         <div className="bubbleimg">
-                                            <img src={profile.studentId % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
+                                            <img src={index % 2 === 0 ? Bubble1 : Bubble2} alt="말풍선" />
                                             <div className="bubble-text">
                                                 {profile.studentId} {profile.name}입니다.
                                             </div>
                                         </div>
                                         <div className="smallbubbleimg">
-                                            <img src={profile.studentId % 2 === 0 ? SmallBubble1 : SmallBubble2} alt="말풍선" />
+                                            <img src={index % 2 === 0 ? SmallBubble1 : SmallBubble2} alt="말풍선" />
                                             <div className="bubble-text">
                                                 {profile.major}
                                             </div>
