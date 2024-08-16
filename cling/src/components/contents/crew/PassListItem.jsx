@@ -97,7 +97,7 @@ const PassListItem = ({ department, step ,  recruitingId, plan}) => {
 
 
     const handleSaveResults = () => {
-        if (isComplete && (plan === onStep)) {
+        if (isComplete && (step === onStep)) {
             axios.put(`https://clinkback.store/updateResults?step=${onStep}&recruitingId=${recruitingId}`, results, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
