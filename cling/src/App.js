@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 
-import { BrowserRouter, Route, Router, Routes, useNavigation } from 'react-router-dom'
+import { BrowserRouter, Route, Router, Routes, useNavigation, HashRouter } from 'react-router-dom'
 import Checkschool from "./components/contents/user/CheckSchool";
 import Landing from './components/landing';
 import NoticeWrite from './components/contents/crew/NoticeWrite';
@@ -40,7 +40,7 @@ function App() {
 
 
     return (
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
             <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/mainhome' element={<Mainhome />} />
@@ -74,7 +74,7 @@ function App() {
                 
                 
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
 
     );
 }
