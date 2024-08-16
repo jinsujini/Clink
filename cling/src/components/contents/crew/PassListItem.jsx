@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import List from './List';
 import Spinner from '../../../assets/img/loading.gif';
 
-const PassListItem = ({ department, plan, recruitingId, step }) => {
+const PassListItem = ({ department, step ,  recruitingId, plan}) => {
     const [students, setStudents] = useState([]);
     const [results, setResults] = useState({});
     const [isComplete, setIsComplete] = useState(false);
@@ -14,6 +14,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
     const [active, setActive] = useState(false);
     const [title, setTitle] = useState('');
     const [endStep, setEndStep] = useState(false);
+    const [onStep, setOnStep] = useState('');
 
     useEffect(() => {
         setLoading(true);
@@ -28,7 +29,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
             fetchStudents();
             fetchinfo();
         }
-    }, [step]);
+    }, [plan]);
 
 
     useEffect(() => {
@@ -53,8 +54,9 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
 
                     const initialResults = {};
                     fetchedStudents.forEach(student => {
-                        initialResults[student.studentId] = first ? student.secondResult : student.firstResult;
+                        initialResults[student.studentId] = first ? student.firstResult : student.secondResult;
                     });
+                    
                     setResults(initialResults);
                     setLoading(false);
                 } else {
@@ -78,6 +80,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
                 if (res.status === 200) {
                     setTitle(res.data.title);
                     setActive(parseInt(step) === parseInt(res.data.onStep));
+                    setOnStep(res.data.onStep);
 
 
                     if (parseInt(step) + 1 === parseInt(res.data.onStep)) {
@@ -94,8 +97,8 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
 
 
     const handleSaveResults = () => {
-        if (isComplete) {
-            axios.put(`https://clinkback.store/updateResults?step=${plan}&recruitingId=${recruitingId}`, results, {
+        if (isComplete && (plan === onStep)) {
+            axios.put(`https://clinkback.store/updateResults?step=${onStep}&recruitingId=${recruitingId}`, results, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -109,7 +112,7 @@ const PassListItem = ({ department, plan, recruitingId, step }) => {
                     console.error(err);
                 });
         } else {
-            alert('미정 상태인 지원자가 있습니다.');
+            alert('미정인 지원자가 있습니다. ');
         }
     };
 
