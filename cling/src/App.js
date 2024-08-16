@@ -39,36 +39,8 @@ function App() {
     const navigate = useNavigation();
 
 
-    useEffect(() => {
-        setAccessToken(localStorage.getItem('accessToken'));
-    })
-
-    useEffect(() => {
-        if (accessToken) {
-            axios.get('https://clinkback.store/api/auth/login', {
-                headers: {
-                    Authorization: `Bearer ${accessToken}`
-                }
-            })
-                .then((res) => {
-                    if (res.status === 200) {
-                        setLogin(true)
-                    }
-                })
-                .catch((err) => {
-                    navigate('/login')
-                    console.log(err)
-                })
-        } else {
-            navigate('/login')
-            setLogin(false)
-        }
-    }, [accessToken])
-
-   
-
     return (
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/mainhome' element={<Mainhome />} />
