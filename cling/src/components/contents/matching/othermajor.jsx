@@ -46,7 +46,11 @@ const OtherMajor = () => {
         if (profiles.length > 0) {
             profiles.forEach(profile => {
                 fetchProfileImage(profile.studentId);
+                
             });
+        }
+        else{
+            setLoading(false);
         }
         
     }, [profiles]);
