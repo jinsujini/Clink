@@ -1,9 +1,27 @@
+::-webkit-scrollbar {
+
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(220, 20, 60, .1);
+    border: 0.5px solid #fff;
+    border-radius: 10px;
+}
 .chat-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     //border: 1px solid blue;
+
+    
 
     .Matching {
         background: linear-gradient(90deg, #3851FF, #8037FF);
