@@ -24,8 +24,8 @@ import Login from './components/contents/user/Login';
 import Findpw from './components/contents/user/Findpw';
 import Newpw from './components/contents/user/Newpw';
 import Crew from './components/contents/crew/Crew';
-import Mycrew from './components/contents/crew/Mycrew';   
-import NoticeDetail from './components/contents/crew/NoticeDetail';  
+import Mycrew from './components/contents/crew/Mycrew';
+import NoticeDetail from './components/contents/crew/NoticeDetail';
 import PassList from './components/contents/crew/PassList';
 
 
@@ -34,23 +34,19 @@ import PassList from './components/contents/crew/PassList';
 import './assets/scss/section/base.scss'
 
 function App() {
-    const [accessToken, setAccessToken] = useState('');
-    const [login, setLogin] = useState(false);
-    const navigate = useNavigation();
-
 
     return (
         <HashRouter>
             <Routes>
                 <Route path='/' element={<Landing />} />
                 <Route path='/mainhome' element={<Mainhome />} />
-                <Route path='/login/findpw' element = {<Findpw />} />
-                <Route path='/login/newpw' element = {<Newpw />} />
-                <Route path='/crew' element = {<Crew />} />
-                <Route path='/mycrew' element = {<Mycrew />} />
-                <Route path='/mycrew/PassList' element = {<PassList />} />
-                <Route path='/mycrew/:department' element={<Mycrew />} />  
-                <Route path='/notice/:id' element={<NoticeDetail />} />   
+                <Route path='/login/findpw' element={<Findpw />} />
+                <Route path='/login/newpw' element={<Newpw />} />
+                <Route path='/crew' element={<Crew />} />
+                <Route path='/mycrew' element={<Mycrew />} />
+                <Route path='/mycrew/PassList' element={<PassList />} />
+                <Route path='/mycrew/:department' element={<Mycrew />} />
+                <Route path='/notice/:id' element={<NoticeDetail />} />
 
                 <Route path='/create' element={<Checkschool />} />
                 <Route path='/login' element={<Login />} />
@@ -58,8 +54,8 @@ function App() {
                 <Route path='/noticeWrite/:department' element={<NoticeWrite />} />
                 <Route path='/noticeWrites' element={<NoticeWrites />} />
                 <Route path='/noticeEdit/:id' element={<NoticeEdit />} />
-                <Route path='/noticeOpen/:id' element={<NoticeOpen />} /> 
-                
+                <Route path='/noticeOpen/:id' element={<NoticeOpen />} />
+
                 <Route path='/myhome' element={<Myhome />} />
                 <Route path='/create/info' element={<Create />} />
                 <Route path='/match/info' element={<MatchingInfo />} />
@@ -70,9 +66,9 @@ function App() {
                 <Route path="/loading" element={<Loading />} />
                 <Route path="/chat/:roomId" element={<Chat />} />
 
-               
-                
-                
+
+
+
             </Routes>
         </HashRouter>
 
