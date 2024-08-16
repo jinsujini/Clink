@@ -14,7 +14,7 @@ const Samemajor = () => {
     const navigate = useNavigate();
     const profiles = location.state?.profiles || [];
     const [profileImages, setProfileImages] = useState({});
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const containerVariants = {
         hidden: {},
@@ -46,7 +46,7 @@ const Samemajor = () => {
                 fetchProfileImage(profile.studentId);
             });
         
-            setLoading(false);
+            
         }
         else{
             
@@ -61,12 +61,14 @@ const Samemajor = () => {
             },
         })
             .then(response => {
+                setLoading(true);
               
                 if (response.data && response.data.imageByte) {
                     setProfileImages(prevImages => ({
                         ...prevImages,
                         [studentId]: `data:image/jpeg;base64,${response.data.imageByte}`
                     }));
+                    setLoading(false);
                 }
                 console.log(response);
             })

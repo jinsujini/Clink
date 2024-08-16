@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
+
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 import Checkschool from "./components/contents/user/CheckSchool";
 import Landing from './components/landing';
@@ -28,9 +30,40 @@ import PassList from './components/contents/crew/PassList';
 
 
 
+
 import './assets/scss/section/base.scss'
 
 function App() {
+    const [accessToken, setAccessToken] = useState('')
+    const [login, setLogin] = useState(false)
+
+
+    useEffect(() => {
+        setAccessToken(localStorage.getItem('accessToken'));
+    })
+
+    useEffect(() => {
+        if (accessToken) {
+            axios.get('https://clinkback.store/api/auth/login', {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            })
+                .then((res) => {
+                    if (res.status === 200) {
+                        setLogin(true)
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+        } else {
+            setLogin(false)
+        }
+    }, [accessToken])
+
+   
+
     return (
         <BrowserRouter>
             <Routes>
